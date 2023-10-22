@@ -1,8 +1,10 @@
-%   This is an encryption system using ACDFGVX ciper (A modifies version of ADFGVX, which is upgraded version of ADFGX)
+%   This is an encryption system using ACDFGVX cipher (A modified version of ADFGVX, which is an upgraded version of ADFGX)
 %   The ADFGVX Cipher was used by the German Army during World War I as a field cipher. 
 %   It was an extension of the earlier ADFGX Cipher which worked in a very similar way. 
 %   It was invented by Colonel Fritz Nebel, and it combines an adapted Polybius Square with Columnar Transposition.
 %   It uses a 7x7 polybius square instead of the 6x6 in the original (or 5x5 in case of ADFGX).
+%   Source: Wikipedia, CRYPTO CORNER.
+
 m='ACDFGVX';
 mapping=table2array(combinations(m,m));
 file=fopen("polybius.txt","r");
@@ -10,7 +12,7 @@ poly=fscanf(file,'%c',51);
 poly=strrep(poly,'"','');
 acdfgvx=strcat(mapping,poly');
 
-disp("Welcome to ACDFGVX encryting system:");
+disp("Welcome to ACDFGVX encrypting system:");
 disp("You have the following choices:")
 disp("1. To encrypt plain text(message)");
 disp("2. To decrypt cipher text(encrypted data)");
@@ -42,8 +44,6 @@ switch c
         print();
 
 end
-
-
 
 function cipher_j = selection_sort(array,array1)
   len = length(array);
