@@ -1,5 +1,5 @@
 function [mapf] = polybius()
-%This function generates a 7x7 polybius square
+%  This function generates a 7x7 polybius square
 %  The square contains 49 unique characters as follows: 
 %   A-Z | 0-9 | space | symbols  ,.,''-_%+*@?() 
 %   Def: A Polybius Square is a table that allows someone to convert letters into numbers.
@@ -9,12 +9,6 @@ function [mapf] = polybius()
 map='';
 map_alpha=char(randperm(26,26)+64);
 for i=1:length(map_alpha)
-%%
-% 
-%   for x = 1:10
-%       disp(x)
-%   end
-% 
     t=double(map_alpha(i))-64;
     map=append(map,map_alpha(i));
     if (t>0 && t<10)
@@ -37,3 +31,4 @@ for i=1:length(map)
         j=j+1;
     end
 end
+writematrix(mapf,'polybius.txt');
