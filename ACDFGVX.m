@@ -42,7 +42,7 @@ switch c
         disp(cipher_j);
     case 2
         print();
-
+        % This portion hasn't been developed yet
 end
 
 function cipher_j = selection_sort(array,array1)
