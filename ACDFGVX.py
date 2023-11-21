@@ -28,7 +28,7 @@ def sort_function(array): #O(n(log n))
             quicksort(array, pivot + 1, end)
     array=[array]+[list(range(len(array)))]
     quicksort(array)
-    return array[0],array[1]
+    return array[1]
 
 def permute(m):
     res=[]
@@ -60,7 +60,10 @@ def encrypt(c,key):
     row_n = padl // keyl
     # Encryption
     cipher_i = [message_s[i:i+keyl] for i in range(0, len(message_s), keyl)]
-    cipher_j = sort_function(key, cipher_i, keyl)
+    subs_table=sort_function(array)
+    for i in cipher_i:
+        for j in subs_table:
+            i=
     cipher_final = ''.join(cipher_j)
     print("Cipher Text: \n%s" % cipher_final)
 
@@ -78,6 +81,3 @@ def acdfgvx(c,key,choice):
         pt = sort_function(key, c, keyl)
         pt_final = ''.join(pt)
         # This portion hasn't been developed yet
-
-
-
