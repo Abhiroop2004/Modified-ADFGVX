@@ -27,7 +27,7 @@ def sort_function(array): #O(n(log n))
             quicksort(array, begin, pivot - 1)
             quicksort(array, pivot + 1, end)
     array=[array]+[list(range(len(array)))]
-    quicksort(array)
+    quicksort(array,0,len(array[1])-1)
     return array[1]
 
 def permute(m):
@@ -44,40 +44,61 @@ def polybius():
         mapping[i].append(poly[i])
     return mapping
 
-def encrypt(c,key):
-    l=len(c)
+def arrange(r,substitute):
+    result=['']*len(r)
+    c=0
+    for i in substitute:
+        result[c]=r[i]
+        c=c+1
+    return result
+
+def convert(input):
+    for i in range(len(input)):
+        if input[i]=='A':    
+            input[i]=1
+        elif input[i]=='C':
+            input[i]=2
+        elif input[i]=='D':
+            input[i]=3
+        elif input[i]=='F':
+            input[i]=4
+        elif input[i]=='G':
+            input[i]=5
+        elif input[i]=='V':
+            input[i]=6
+        elif input[i]=='X':
+            input[i]=7
+        elif input[i]==' ':
+            input[i]=0
+    return input
+
+def encrypt(plaintext,key):
+    plaintext=plaintext.upper()
+    l=len(plaintext)
     message_s=''
     mapping=polybius()
-    for i in range(l):
-        t = c[i]
+    print(mapping)
+    #print(mapping[2][2])
+    for i in plaintext:
+        print("\n",i)
         for j in range(49):
-            if mapping[j][2] == t:
-                message_s += mapping[j][0:2]
+            if mapping[j][2] == i:
+                message_s += mapping[j][0]+mapping[j][1]
+    print(message_s)
     keyl = len(key)
     padl = math.ceil((l * 2) / keyl) * keyl
     message_s = message_s.ljust(padl)
-    print(message_s)
     row_n = padl // keyl
     # Encryption
     cipher_i = [message_s[i:i+keyl] for i in range(0, len(message_s), keyl)]
-    subs_table=sort_function(array)
-    for i in cipher_i:
-        for j in subs_table:
-            i=
-    cipher_final = ''.join(cipher_j)
-    print("Cipher Text: \n%s" % cipher_final)
+    subs_table=sort_function(list(key))
+    print(subs_table)
+    for row in cipher_i:
+       new_row=arrange(row,subs_table)
+       convert(new_row)
+            
+    #This portion is incomplete
 
-
-def acdfgvx(c,key,choice):
-    if choice == 1:
-        # This is the code for encrypting data
-        c = c.upper()
-        encrypt(c,key)
-    elif choice == 2:
-        l = len(c)
-        keyl = len(key)
-        padl = math.ceil((l) / keyl) * keyl
-        c = [c[i:i+keyl] for i in range(0, len(c), keyl)]
-        pt = sort_function(key, c, keyl)
-        pt_final = ''.join(pt)
-        # This portion hasn't been developed yet
+def decrypt(ciphertext,key):
+    pass 
+    #this portion hasn't been developed yet
